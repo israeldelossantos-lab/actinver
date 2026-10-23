@@ -13,14 +13,12 @@ view: hospital_patients {
     label: "Nombre de Paciente"
     tags: ["pii", "phi"]
     sql: ${TABLE}.patient_name ;;
-    required_access_grants: [ver_datos_clinicos]
   }
 
   dimension: age {
     type: number
     label: "Edad"
     sql: ${TABLE}.age ;;
-    required_access_grants: [ver_datos_clinicos]
   }
 
   dimension: gender {
@@ -55,7 +53,6 @@ view: hospital_patients {
     type: string
     label: "Diagnóstico"
     sql: ${TABLE}.diagnosis ;;
-    required_access_grants: [ver_datos_clinicos]
   }
 
   dimension: total_bill_amount {
@@ -63,7 +60,6 @@ view: hospital_patients {
     label: "Monto Facturado"
     value_format_name: usd
     sql: ${TABLE}.total_bill_amount ;;
-    required_access_grants: [ver_financiero]
   }
 
   dimension: insurance_coverage_pct {
@@ -71,7 +67,6 @@ view: hospital_patients {
     label: "Cobertura de Seguro (%)"
     description: "Porcentaje cubierto por póliza de seguro (0-100)"
     sql: ${TABLE}.insurance_coverage_pct ;;
-    required_access_grants: [ver_financiero]
   }
 
   dimension: payment_status {
@@ -93,7 +88,6 @@ view: hospital_patients {
     type: string
     label: "Grupo de Edad"
     description: "Pediátrico (0-17), Adulto joven (18-39), Adulto (40-64), Adulto mayor (65+)"
-    required_access_grants: [ver_datos_clinicos]
     case: {
       when: {
         sql: ${age} < 18 ;;
@@ -136,7 +130,6 @@ view: hospital_patients {
     type: string
     label: "Nivel de Cobertura de Seguro"
     description: "Sin seguro (0), Parcial (1-49), Mayoritaria (50-99), Total (100)"
-    required_access_grants: [ver_financiero]
     case: {
       when: {
         sql: ${insurance_coverage_pct} = 0 ;;
@@ -169,7 +162,6 @@ view: hospital_patients {
     description: "Suma del monto total facturado por servicios hospitalarios"
     value_format_name: usd_0
     sql: ${total_bill_amount} ;;
-    required_access_grants: [ver_financiero]
   }
 
   measure: avg_bill_amount {
@@ -179,7 +171,6 @@ view: hospital_patients {
     description: "Monto facturado promedio por paciente admitido"
     value_format_name: usd_0
     sql: ${total_bill_amount} ;;
-    required_access_grants: [ver_financiero]
   }
 
   measure: avg_patient_age {
@@ -189,7 +180,6 @@ view: hospital_patients {
     description: "Promedio de edad de los pacientes atendidos"
     value_format_name: decimal_1
     sql: ${age} ;;
-    required_access_grants: [ver_datos_clinicos]
   }
 
   # --- KPI measures ---
@@ -218,7 +208,6 @@ view: hospital_patients {
     description: "Porción de la factura liquidada o cubierta por seguro"
     value_format_name: usd_0
     sql: ${total_bill_amount} * (${insurance_coverage_pct} / 100.0) ;;
-    required_access_grants: [ver_financiero]
   }
 
   measure: patient_out_of_pocket {
@@ -228,7 +217,6 @@ view: hospital_patients {
     description: "Monto neto a cargo directo del paciente"
     value_format_name: usd_0
     sql: ${total_billed} - ${insurance_covered_amount} ;;
-    required_access_grants: [ver_financiero]
   }
 
   measure: avg_insurance_coverage {
@@ -238,7 +226,6 @@ view: hospital_patients {
     description: "Porcentaje promedio de cobertura asegurada"
     value_format_name: percent_0
     sql: ${insurance_coverage_pct} / 100.0 ;;
-    required_access_grants: [ver_financiero]
   }
 
   measure: pending_amount {
@@ -249,7 +236,6 @@ view: hospital_patients {
     value_format_name: usd_0
     sql: ${total_bill_amount} ;;
     filters: [payment_status: "Pending,Partially Paid"]
-    required_access_grants: [ver_financiero]
   }
 
   measure: paid_amount {
@@ -257,7 +243,6 @@ view: hospital_patients {
     hidden: yes
     sql: ${total_bill_amount} ;;
     filters: [payment_status: "Paid"]
-    required_access_grants: [ver_financiero]
   }
 
   measure: collection_rate_pct {
@@ -267,7 +252,6 @@ view: hospital_patients {
     description: "Porcentaje del monto facturado efectivamente cobrado (Paid)"
     value_format_name: percent_1
     sql: SAFE_DIVIDE(${paid_amount}, ${total_billed}) ;;
-    required_access_grants: [ver_financiero]
   }
 
   measure: revenue_per_patient_day {
@@ -277,6 +261,5 @@ view: hospital_patients {
     description: "Facturación total dividida entre el total de días paciente"
     value_format_name: usd_0
     sql: SAFE_DIVIDE(${total_billed}, ${total_patient_days}) ;;
-    required_access_grants: [ver_financiero]
   }
 }

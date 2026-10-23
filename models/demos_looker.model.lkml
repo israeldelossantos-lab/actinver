@@ -3,6 +3,10 @@ connection: "claro_video_bigquery"
 include: "/views/**/*.view.lkml"
 include: "/dashboards/**/*.dashboard.lookml"
 
+named_value_format: mxn_m {
+  value_format: "[>=1000000]$#,##0.0,,\"M\";$#,##0"
+}
+
 # ==============================================================================
 # ACCESS GRANTS: Control de Acceso por Columna y Explore
 # ==============================================================================
@@ -94,4 +98,89 @@ explore: contexto_usuario {
   label: "Contexto de Usuario Actual"
   description: "Devuelve los atributos de seguridad del usuario de la sesión actual"
   hidden: yes
+}
+
+# ==============================================================================
+# EXPLORES: Actinver (Banca Privada, Inversiones, Crédito y Operaciones)
+# ==============================================================================
+
+explore: fact_movimientos_inversion {
+  label: "Actinver - Movimientos e Inversiones"
+  description: "Movimientos transaccionales de inversión de clientes, fondos y asesores"
+
+  join: dim_clientes {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${fact_movimientos_inversion.cliente_id} = ${dim_clientes.cliente_id} ;;
+  }
+
+  join: dim_asesores {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${fact_movimientos_inversion.asesor_id} = ${dim_asesores.asesor_id} ;;
+  }
+
+  join: dim_productos {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${fact_movimientos_inversion.producto_id} = ${dim_productos.producto_id} ;;
+  }
+}
+
+explore: fact_cartera_credito {
+  label: "Actinver - Cartera de Crédito"
+  description: "Cortes mensuales de saldos de capital, días de atraso y morosidad de créditos"
+
+  join: dim_clientes {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${fact_cartera_credito.cliente_id} = ${dim_clientes.cliente_id} ;;
+  }
+}
+
+explore: fact_finanzas_mensual {
+  label: "Actinver - Finanzas Mensuales"
+  description: "Ingresos, costos, utilidad operativa y presupuesto por unidad de negocio"
+}
+
+explore: fact_rendimiento_fondos {
+  label: "Actinver - Rendimiento de Fondos"
+  description: "AUM mensual y rendimientos comparados contra el benchmark de mercado"
+
+  join: dim_productos {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${fact_rendimiento_fondos.producto_id} = ${dim_productos.producto_id} ;;
+  }
+}
+
+explore: fact_marketing_campanias {
+  label: "Actinver - Marketing y Campañas"
+  description: "Inversión publicitaria, impresiones, clics, leads y conversiones por canal"
+}
+
+explore: fact_operaciones_diarias {
+  label: "Actinver - Operaciones Diarias"
+  description: "Métricas diarias de calidad de servicio, tasas de rechazo y tiempos de resolución"
+}
+
+explore: calidad_datos {
+  label: "Actinver - Calidad de Datos"
+  description: "Monitoreo automatizado de reglas de negocio y calidad de datos"
+}
+
+explore: roll_rate_cartera {
+  label: "Actinver - Roll Rate de Cartera"
+  description: "Matriz de transición y migración de morosidad entre cortes mensuales"
+}
+
+explore: dim_clientes {
+  label: "Actinver - Clientes y Crecimiento"
+  description: "Altas, bajas, clientes netos y base total de clientes de Actinver"
+
+  join: dim_asesores {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${dim_clientes.asesor_id} = ${dim_asesores.asesor_id} ;;
+  }
 }
