@@ -1,5 +1,5 @@
 - dashboard: actinver_overview
-  title: ""
+  title: "Panorama Ejecutivo y Desempeño Financiero"
   description: "Monitoreo integral de captación, fondos de inversión, cartera crediticia y rentabilidad financiera."
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -46,16 +46,22 @@
 
     - name: kpi_captacion_neta
       title: "Captación Neta MXN"
-      title_hidden: true
-      show_single_value_title: true
-      single_value_title: "Captación Neta MXN"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       fields: [fact_movimientos_inversion.captacion_neta_mxn]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         region: dim_clientes.region
         segmento: dim_clientes.segmento
@@ -66,16 +72,22 @@
 
     - name: kpi_clientes_activos
       title: "Clientes Activos"
-      title_hidden: true
-      show_single_value_title: true
-      single_value_title: "Clientes Activos"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       fields: [dim_clientes.clientes_activos]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         region: dim_clientes.region
         segmento: dim_clientes.segmento
@@ -86,16 +98,22 @@
 
     - name: kpi_ingresos_financieros
       title: "Ingresos Totales MXN"
-      title_hidden: true
-      show_single_value_title: true
-      single_value_title: "Ingresos Totales MXN"
       model: demos_looker
       explore: fact_finanzas_mensual
       type: single_value
+      custom_color_enabled: true
       fields: [fact_finanzas_mensual.total_ingresos]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       row: 4
       col: 12
       width: 6
@@ -103,16 +121,22 @@
 
     - name: kpi_margen_operativo
       title: "Margen Operativo Promedio"
-      title_hidden: true
-      show_single_value_title: true
-      single_value_title: "Margen Operativo Promedio"
       model: demos_looker
       explore: fact_finanzas_mensual
       type: single_value
+      custom_color_enabled: true
       fields: [fact_finanzas_mensual.margen_operativo_pct]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       row: 4
       col: 18
       width: 6

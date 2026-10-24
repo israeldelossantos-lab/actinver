@@ -1,5 +1,5 @@
 - dashboard: actinver_fondos_inversiones
-  title: ""
+  title: "Fondos e Inversiones"
   description: "Evolución de AUM, rendimientos mensuales vs benchmark, análisis de riesgo y flujos netos por fondo de inversión."
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -74,16 +74,23 @@
       height: 4
 
     - name: kpi_aum_total
-      title_hidden: true
-      show_single_value_title: true
       title: "AUM Total"
       model: demos_looker
       explore: fact_rendimiento_fondos
       type: single_value
+      custom_color_enabled: true
       fields: [fact_rendimiento_fondos.total_aum_mxn]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         fecha_corte: fact_rendimiento_fondos.fecha_date
         fondo: fact_rendimiento_fondos.producto_nombre
@@ -94,16 +101,23 @@
       height: 2
 
     - name: kpi_crecimiento_aum
-      title_hidden: true
-      show_single_value_title: true
       title: "Crecimiento de AUM"
       model: demos_looker
       explore: fact_rendimiento_fondos
       type: single_value
+      custom_color_enabled: true
       fields: [fact_rendimiento_fondos.crecimiento_aum_pct]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         fondo: fact_rendimiento_fondos.producto_nombre
         perfil_riesgo: dim_productos.perfil_riesgo
@@ -113,16 +127,23 @@
       height: 2
 
     - name: kpi_rendimiento_ponderado
-      title_hidden: true
-      show_single_value_title: true
       title: "Rendimiento Mensual Ponderado"
       model: demos_looker
       explore: fact_rendimiento_fondos
       type: single_value
+      custom_color_enabled: true
       fields: [fact_rendimiento_fondos.rendimiento_ponderado_aum_pct]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_rendimiento_fondos.fecha_month
         fondo: fact_rendimiento_fondos.producto_nombre
@@ -133,15 +154,22 @@
       height: 2
 
     - name: kpi_alpha_promedio
-      title_hidden: true
-      show_single_value_title: true
       title: "Alpha Promedio (pp)"
       model: demos_looker
       explore: fact_rendimiento_fondos
       type: single_value
+      custom_color_enabled: true
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       fields: [fact_rendimiento_fondos.alpha_promedio_pp]
       listen:
         periodo: fact_rendimiento_fondos.fecha_month
@@ -153,16 +181,23 @@
       height: 2
 
     - name: kpi_meses_sobre_benchmark
-      title_hidden: true
-      show_single_value_title: true
       title: "% Meses Sobre Benchmark"
       model: demos_looker
       explore: fact_rendimiento_fondos
       type: single_value
+      custom_color_enabled: true
       fields: [fact_rendimiento_fondos.pct_meses_sobre_benchmark]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_rendimiento_fondos.fecha_month
         fondo: fact_rendimiento_fondos.producto_nombre
@@ -173,18 +208,25 @@
       height: 2
 
     - name: kpi_flujo_neto_fondos
-      title_hidden: true
-      show_single_value_title: true
       title: "Flujo Neto a Fondos"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       fields: [fact_movimientos_inversion.captacion_neta_mxn]
       filters:
         dim_productos.categoria: "Fondos"
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_movimientos_inversion.fecha_month
         fondo: dim_productos.producto_nombre

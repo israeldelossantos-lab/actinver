@@ -81,7 +81,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#00796B"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         admission_date: hospital_patients.admission_date
         department: hospital_patients.department
@@ -90,7 +98,7 @@
       row: 2
       col: 0
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_los_promedio
       title: "Estancia Promedio (Días)"
@@ -101,7 +109,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#00796B"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         admission_date: hospital_patients.admission_date
         department: hospital_patients.department
@@ -110,7 +126,7 @@
       row: 2
       col: 4
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_facturacion_total
       title: "Facturación Total"
@@ -121,7 +137,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#00796B"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         admission_date: hospital_patients.admission_date
         department: hospital_patients.department
@@ -130,7 +154,7 @@
       row: 2
       col: 8
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_cobertura_promedio
       title: "Cobertura Seguro Promedio"
@@ -141,7 +165,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#00796B"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         admission_date: hospital_patients.admission_date
         department: hospital_patients.department
@@ -150,7 +182,7 @@
       row: 2
       col: 12
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_monto_pendiente
       title: "Monto Pendiente"
@@ -161,7 +193,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#D93025"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         admission_date: hospital_patients.admission_date
         department: hospital_patients.department
@@ -170,7 +210,7 @@
       row: 2
       col: 16
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_tasa_cobro
       title: "Tasa de Cobro %"
@@ -181,7 +221,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#1E8E3E"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         admission_date: hospital_patients.admission_date
         department: hospital_patients.department
@@ -190,7 +238,7 @@
       row: 2
       col: 20
       width: 4
-      height: 3
+      height: 2
 
     # --- Filas 2-3: Gráficos Principales ---
     - name: chart_admisiones_tiempo_departamento

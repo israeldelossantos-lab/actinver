@@ -1,5 +1,5 @@
 - dashboard: actinver_ejecutivo_financiero
-  title: ""
+  title: "Ejecutivo Financiero"
   description: "Monitoreo integral de ingresos, costos, márgenes operativos y cumplimiento de metas financieras de Actinver."
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -60,16 +60,23 @@
       height: 4
 
     - name: kpi_ingresos
-      title_hidden: true
-      show_single_value_title: true
       title: "Ingresos Totales"
       model: demos_looker
       explore: fact_finanzas_mensual
       type: single_value
+      custom_color_enabled: true
       fields: [fact_finanzas_mensual.total_ingresos]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_finanzas_mensual.mes_month
         area_negocio: fact_finanzas_mensual.area_negocio
@@ -79,16 +86,23 @@
       height: 2
 
     - name: kpi_utilidad
-      title_hidden: true
-      show_single_value_title: true
       title: "Utilidad Operativa"
       model: demos_looker
       explore: fact_finanzas_mensual
       type: single_value
+      custom_color_enabled: true
       fields: [fact_finanzas_mensual.total_utilidad_operativa]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_finanzas_mensual.mes_month
         area_negocio: fact_finanzas_mensual.area_negocio
@@ -98,16 +112,23 @@
       height: 2
 
     - name: kpi_margen
-      title_hidden: true
-      show_single_value_title: true
       title: "Margen Operativo"
       model: demos_looker
       explore: fact_finanzas_mensual
       type: single_value
+      custom_color_enabled: true
       fields: [fact_finanzas_mensual.margen_operativo_pct]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_finanzas_mensual.mes_month
         area_negocio: fact_finanzas_mensual.area_negocio
@@ -117,15 +138,22 @@
       height: 2
 
     - name: kpi_cumplimiento
-      title_hidden: true
-      show_single_value_title: true
       title: "Cumplimiento vs Presupuesto"
       model: demos_looker
       explore: fact_finanzas_mensual
       type: single_value
+      custom_color_enabled: true
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       fields: [fact_finanzas_mensual.cumplimiento_presupuesto_pct]
       listen:
         periodo: fact_finanzas_mensual.mes_month
@@ -136,16 +164,23 @@
       height: 2
 
     - name: kpi_aum
-      title_hidden: true
-      show_single_value_title: true
       title: "AUM Fondos"
       model: demos_looker
       explore: fact_rendimiento_fondos
       type: single_value
+      custom_color_enabled: true
       fields: [fact_rendimiento_fondos.total_aum_mxn]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         fecha_corte: fact_rendimiento_fondos.fecha_date
       row: 4
@@ -154,16 +189,23 @@
       height: 2
 
     - name: kpi_cartera
-      title_hidden: true
-      show_single_value_title: true
       title: "Cartera de Crédito"
       model: demos_looker
       explore: fact_cartera_credito
       type: single_value
+      custom_color_enabled: true
       fields: [fact_cartera_credito.saldo_total_capital]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         fecha_corte: fact_cartera_credito.fecha_corte_date
       row: 4

@@ -67,14 +67,22 @@
       explore: retail_inventory
       type: single_value
       fields: [retail_inventory.count]
-      custom_color: "#0B6E4F"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
       row: 6
       col: 0
       width: 6
-      height: 6
+      height: 2
 
     - name: grid_retail_detalle
       title: "Detalle de Retail Inventory"
@@ -123,14 +131,22 @@
       explore: e_commerce_orders
       type: single_value
       fields: [e_commerce_orders.count]
-      custom_color: "#0B6E4F"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
       row: 13
       col: 0
       width: 6
-      height: 6
+      height: 2
 
     - name: grid_ecommerce_detalle
       title: "Detalle de Órdenes E-Commerce"
@@ -180,14 +196,22 @@
       explore: project_management
       type: single_value
       fields: [project_management.count]
-      custom_color: "#0B6E4F"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
       row: 20
       col: 0
       width: 6
-      height: 6
+      height: 2
 
     - name: grid_proyectos_detalle
       title: "Detalle de Tareas de Proyectos"
@@ -237,14 +261,22 @@
       explore: hospital_patients
       type: single_value
       fields: [hospital_patients.count]
-      custom_color: "#0B6E4F"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
       row: 27
       col: 0
       width: 6
-      height: 6
+      height: 2
 
     - name: grid_hospital_detalle
       title: "Detalle de Pacientes Hospitalarios"
@@ -294,14 +326,22 @@
       explore: marketing_campaigns
       type: single_value
       fields: [marketing_campaigns.count]
-      custom_color: "#0B6E4F"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
       row: 34
       col: 0
       width: 6
-      height: 6
+      height: 2
 
     - name: grid_marketing_detalle
       title: "Detalle de Campañas de Marketing"
@@ -351,14 +391,22 @@
       explore: social_media_analytics
       type: single_value
       fields: [social_media_analytics.count]
-      custom_color: "#0B6E4F"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
       row: 41
       col: 0
       width: 6
-      height: 6
+      height: 2
 
     - name: grid_social_detalle
       title: "Detalle de Redes Sociales"

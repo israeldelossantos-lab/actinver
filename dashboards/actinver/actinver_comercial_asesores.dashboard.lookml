@@ -1,5 +1,5 @@
 - dashboard: actinver_comercial_asesores
-  title: ""
+  title: "Gestión Comercial y Asesores"
   description: "Seguimiento al desempeño de asesores comerciales, captación por región, retención de clientes y cumplimiento de metas en Actinver."
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -102,16 +102,23 @@
       height: 4
 
     - name: kpi_captacion_neta
-      title_hidden: true
-      show_single_value_title: true
       title: "Captación Neta"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       fields: [fact_movimientos_inversion.captacion_neta_mxn]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_movimientos_inversion.fecha_date
         region: dim_asesores.region
@@ -125,16 +132,23 @@
       height: 2
 
     - name: kpi_aportaciones
-      title_hidden: true
-      show_single_value_title: true
       title: "Aportaciones"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       fields: [fact_movimientos_inversion.total_aportaciones_mxn]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_movimientos_inversion.fecha_date
         region: dim_asesores.region
@@ -148,16 +162,23 @@
       height: 2
 
     - name: kpi_retiros
-      title_hidden: true
-      show_single_value_title: true
       title: "Retiros"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       fields: [fact_movimientos_inversion.total_retiros_abs_mxn]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_movimientos_inversion.fecha_date
         region: dim_asesores.region
@@ -171,15 +192,22 @@
       height: 2
 
     - name: kpi_retencion
-      title_hidden: true
-      show_single_value_title: true
       title: "Tasa de Retención"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       fields: [fact_movimientos_inversion.tasa_retencion_pct]
       listen:
         periodo: fact_movimientos_inversion.fecha_date
@@ -194,16 +222,23 @@
       height: 2
 
     - name: kpi_clientes_movimiento
-      title_hidden: true
-      show_single_value_title: true
       title: "Clientes con Movimiento"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       fields: [fact_movimientos_inversion.clientes_con_movimiento]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_movimientos_inversion.fecha_date
         region: dim_asesores.region
@@ -217,12 +252,11 @@
       height: 2
 
     - name: kpi_asesores_meta
-      title_hidden: true
-      show_single_value_title: true
       title: "Asesores en Meta"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       fields: [dim_asesores.asesor_id, fact_movimientos_inversion.cumplimiento_meta_pct]
       dynamic_fields:
         - table_calculation: asesores_cumplen
@@ -230,8 +264,16 @@
           expression: "count(if(${fact_movimientos_inversion.cumplimiento_meta_pct} >= 1.0, ${dim_asesores.asesor_id}, null))"
           value_format_name: decimal_0
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_movimientos_inversion.fecha_date
         region: dim_asesores.region

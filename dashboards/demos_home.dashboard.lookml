@@ -39,12 +39,22 @@
       explore: retail_inventory
       type: single_value
       fields: [retail_inventory.total_sales_revenue]
-      custom_color: "#0B6E4F"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 5
       col: 0
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_retail_low_stock
       title: "% en Bajo Stock"
@@ -52,12 +62,22 @@
       explore: retail_inventory
       type: single_value
       fields: [retail_inventory.low_stock_pct]
-      custom_color: "#D93025"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 5
       col: 4
       width: 4
-      height: 3
+      height: 2
 
     # =========================================================================
     # 2. PROJECT MANAGEMENT
@@ -78,12 +98,22 @@
       explore: project_management
       type: single_value
       fields: [project_management.on_time_rate_pct]
-      custom_color: "#1E8E3E"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 5
       col: 8
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_pmo_cpi
       title: "Índice Costo (CPI)"
@@ -91,12 +121,22 @@
       explore: project_management
       type: single_value
       fields: [project_management.cpi]
-      custom_color: "#1A3A6B"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 5
       col: 12
       width: 4
-      height: 3
+      height: 2
 
     # =========================================================================
     # 3. E-COMMERCE ORDERS
@@ -117,12 +157,22 @@
       explore: e_commerce_orders
       type: single_value
       fields: [e_commerce_orders.total_revenue_sum]
-      custom_color: "#5B2A86"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 5
       col: 16
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_ecom_margen
       title: "Margen de Utilidad %"
@@ -130,12 +180,22 @@
       explore: e_commerce_orders
       type: single_value
       fields: [e_commerce_orders.profit_margin_pct]
-      custom_color: "#5B2A86"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 5
       col: 20
       width: 4
-      height: 3
+      height: 2
 
     # =========================================================================
     # 4. HOSPITAL PATIENTS
@@ -156,12 +216,22 @@
       explore: hospital_patients
       type: single_value
       fields: [hospital_patients.avg_length_of_stay]
-      custom_color: "#00796B"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 10
       col: 0
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_hospital_tasa_cobro
       title: "Tasa de Cobro %"
@@ -169,12 +239,22 @@
       explore: hospital_patients
       type: single_value
       fields: [hospital_patients.collection_rate_pct]
-      custom_color: "#1E8E3E"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 10
       col: 4
       width: 4
-      height: 3
+      height: 2
 
     # =========================================================================
     # 5. SOCIAL MEDIA ANALYTICS
@@ -195,12 +275,22 @@
       explore: social_media_analytics
       type: single_value
       fields: [social_media_analytics.weighted_engagement_rate]
-      custom_color: "#1E8E3E"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 10
       col: 8
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_social_reach
       title: "Alcance Acumulado"
@@ -208,12 +298,22 @@
       explore: social_media_analytics
       type: single_value
       fields: [social_media_analytics.total_reach]
-      custom_color: "#C13584"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 10
       col: 12
       width: 4
-      height: 3
+      height: 2
 
     # =========================================================================
     # 6. MARKETING CAMPAIGNS
@@ -234,12 +334,22 @@
       explore: marketing_campaigns
       type: single_value
       fields: [marketing_campaigns.return_on_ad_spend]
-      custom_color: "#1E8E3E"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 10
       col: 16
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_mkt_cpa
       title: "CPA Promedio"
@@ -247,9 +357,19 @@
       explore: marketing_campaigns
       type: single_value
       fields: [marketing_campaigns.cost_per_acquisition]
-      custom_color: "#E8710A"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       custom_color_enabled: true
+      show_single_value_title: true
+      show_comparison: false
       row: 10
       col: 20
       width: 4
-      height: 3
+      height: 2

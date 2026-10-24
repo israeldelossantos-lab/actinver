@@ -1,5 +1,5 @@
 - dashboard: actinver_riesgo_cumplimiento
-  title: ""
+  title: "Riesgo y Cumplimiento Avanzado"
   description: "Monitoreo avanzado de concentración de cartera, matriz de transición roll rate, idoneidad de inversiones, altas/bajas de clientes y desempeño ajustado por riesgo."
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -48,16 +48,23 @@
 # Fila 0: Disclaimer Legal
 
     - name: kpi_concentracion_top10
-      title_hidden: true
-      show_single_value_title: true
       title: "% Saldo Top 10 Empresas"
       model: demos_looker
       explore: fact_cartera_credito
       type: single_value
+      custom_color_enabled: true
       fields: [fact_cartera_credito.pct_saldo_top10_empresas]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         fecha_corte: fact_cartera_credito.fecha_corte_date
       note_state: collapsed
@@ -69,16 +76,23 @@
       height: 2
 
     - name: kpi_indice_herfindahl
-      title_hidden: true
-      show_single_value_title: true
       title: "Índice Herfindahl (HHI)"
       model: demos_looker
       explore: fact_cartera_credito
       type: single_value
+      custom_color_enabled: true
       fields: [fact_cartera_credito.indice_herfindahl]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         fecha_corte: fact_cartera_credito.fecha_corte_date
       note_state: collapsed
@@ -90,16 +104,23 @@
       height: 2
 
     - name: kpi_pct_fuera_perfil
-      title_hidden: true
-      show_single_value_title: true
       title: "% Fuera de Perfil"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       fields: [fact_movimientos_inversion.pct_fuera_perfil]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo_movimientos: fact_movimientos_inversion.fecha_month
       note_state: collapsed
@@ -111,16 +132,23 @@
       height: 2
 
     - name: kpi_ratio_informacion
-      title_hidden: true
-      show_single_value_title: true
       title: "Ratio de Información Promedio"
       model: demos_looker
       explore: fact_rendimiento_fondos
       type: single_value
+      custom_color_enabled: true
       fields: [fact_rendimiento_fondos.ratio_informacion]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       note_state: collapsed
       note_display: hover
       note_text: "Alpha promedio dividido entre el tracking error (calidad de gestión)"
@@ -130,16 +158,23 @@
       height: 2
 
     - name: kpi_monto_pendiente
-      title_hidden: true
-      show_single_value_title: true
       title: "Monto Pendiente MXN"
       model: demos_looker
       explore: fact_movimientos_inversion
       type: single_value
+      custom_color_enabled: true
       fields: [fact_movimientos_inversion.monto_pendiente_mxn]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo_movimientos: fact_movimientos_inversion.fecha_month
       note_state: collapsed

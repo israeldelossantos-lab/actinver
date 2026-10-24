@@ -1,5 +1,5 @@
 - dashboard: actinver_marketing_digital
-  title: ""
+  title: "Marketing y Canales Digitales"
   description: "Monitoreo del embudo de conversión publicitario, inversión multicanal y eficiencia de adquisición (CAC y CPL) en Actinver."
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -60,16 +60,23 @@
       height: 4
 
     - name: kpi_inversion
-      title_hidden: true
-      show_single_value_title: true
       title: "Inversión Total"
       model: demos_looker
       explore: fact_marketing_campanias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_marketing_campanias.total_inversion_mxn]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_marketing_campanias.mes_month
         canal: fact_marketing_campanias.canal
@@ -80,16 +87,23 @@
       height: 2
 
     - name: kpi_leads
-      title_hidden: true
-      show_single_value_title: true
       title: "Total de Leads"
       model: demos_looker
       explore: fact_marketing_campanias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_marketing_campanias.total_leads]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_marketing_campanias.mes_month
         canal: fact_marketing_campanias.canal
@@ -100,16 +114,23 @@
       height: 2
 
     - name: kpi_leads_calificados
-      title_hidden: true
-      show_single_value_title: true
       title: "Leads Calificados"
       model: demos_looker
       explore: fact_marketing_campanias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_marketing_campanias.total_leads_calificados]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_marketing_campanias.mes_month
         canal: fact_marketing_campanias.canal
@@ -120,16 +141,23 @@
       height: 2
 
     - name: kpi_conversiones
-      title_hidden: true
-      show_single_value_title: true
       title: "Conversiones"
       model: demos_looker
       explore: fact_marketing_campanias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_marketing_campanias.total_conversiones]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_marketing_campanias.mes_month
         canal: fact_marketing_campanias.canal
@@ -140,16 +168,23 @@
       height: 2
 
     - name: kpi_cac
-      title_hidden: true
-      show_single_value_title: true
       title: "CAC Promedio MXN"
       model: demos_looker
       explore: fact_marketing_campanias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_marketing_campanias.costo_por_adquisicion_cac]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_marketing_campanias.mes_month
         canal: fact_marketing_campanias.canal
@@ -160,16 +195,23 @@
       height: 2
 
     - name: kpi_ctr
-      title_hidden: true
-      show_single_value_title: true
       title: "CTR Global"
       model: demos_looker
       explore: fact_marketing_campanias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_marketing_campanias.ctr_pct]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo: fact_marketing_campanias.mes_month
         canal: fact_marketing_campanias.canal

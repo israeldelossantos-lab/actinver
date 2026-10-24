@@ -95,7 +95,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#1A3A6B"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         project_name: project_management.project_name
         assigned_to: project_management.assigned_to
@@ -105,7 +113,7 @@
       row: 2
       col: 0
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_pct_completado
       title: "% Avance Promedio"
@@ -116,7 +124,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#1A3A6B"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         project_name: project_management.project_name
         assigned_to: project_management.assigned_to
@@ -126,7 +142,7 @@
       row: 2
       col: 4
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_on_time_rate
       title: "Entrega a Tiempo %"
@@ -137,7 +153,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#1E8E3E"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         project_name: project_management.project_name
         assigned_to: project_management.assigned_to
@@ -147,7 +171,7 @@
       row: 2
       col: 8
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_tareas_retrasadas
       title: "Tareas Retrasadas"
@@ -158,7 +182,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#D93025"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         project_name: project_management.project_name
         assigned_to: project_management.assigned_to
@@ -168,7 +200,7 @@
       row: 2
       col: 12
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_budget_burn
       title: "Presupuesto vs Real (%)"
@@ -179,7 +211,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#1A3A6B"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         project_name: project_management.project_name
         assigned_to: project_management.assigned_to
@@ -189,7 +229,7 @@
       row: 2
       col: 16
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_cpi
       title: "Índice Costo (CPI)"
@@ -200,7 +240,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#1E8E3E"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         project_name: project_management.project_name
         assigned_to: project_management.assigned_to
@@ -210,7 +258,7 @@
       row: 2
       col: 20
       width: 4
-      height: 3
+      height: 2
 
     # --- Filas 2-3: Gráficos Principales ---
     - name: chart_tareas_proyecto_status

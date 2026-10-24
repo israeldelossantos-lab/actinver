@@ -81,7 +81,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#5B2A86"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         order_date: e_commerce_orders.order_date
         region: e_commerce_orders.region
@@ -90,7 +98,7 @@
       row: 2
       col: 0
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_utilidad_total
       title: "Utilidad Total"
@@ -101,7 +109,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#1E8E3E"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         order_date: e_commerce_orders.order_date
         region: e_commerce_orders.region
@@ -110,7 +126,7 @@
       row: 2
       col: 4
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_margen_pct
       title: "Margen de Utilidad %"
@@ -121,7 +137,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#5B2A86"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         order_date: e_commerce_orders.order_date
         region: e_commerce_orders.region
@@ -130,7 +154,7 @@
       row: 2
       col: 8
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_ordenes
       title: "Órdenes Totales"
@@ -141,7 +165,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#5B2A86"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         order_date: e_commerce_orders.order_date
         region: e_commerce_orders.region
@@ -150,7 +182,7 @@
       row: 2
       col: 12
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_aov
       title: "Ticket Promedio (AOV)"
@@ -161,7 +193,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#5B2A86"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         order_date: e_commerce_orders.order_date
         region: e_commerce_orders.region
@@ -170,7 +210,7 @@
       row: 2
       col: 16
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_descuento_efectivo
       title: "Descuento Efectivo %"
@@ -181,7 +221,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#F9AB00"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         order_date: e_commerce_orders.order_date
         region: e_commerce_orders.region
@@ -190,7 +238,7 @@
       row: 2
       col: 20
       width: 4
-      height: 3
+      height: 2
 
     # --- Filas 2-3: Gráficos Principales ---
     - name: chart_evolucion_venta_utilidad

@@ -1,5 +1,5 @@
 - dashboard: actinver_riesgos_operaciones_calidad
-  title: ""
+  title: "Riesgos, Operaciones y Calidad de Datos"
   description: "Monitoreo integral de morosidad crediticia, eficiencia y SLAs operativos, y gobernanza de reglas de calidad de datos en Actinver."
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -84,16 +84,23 @@
       height: 1
 
     - name: kpi_saldo_cartera
-      title_hidden: true
-      show_single_value_title: true
       title: "Saldo de Cartera"
       model: demos_looker
       explore: fact_cartera_credito
       type: single_value
+      custom_color_enabled: true
       fields: [fact_cartera_credito.saldo_total_capital]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         fecha_corte: fact_cartera_credito.fecha_corte_date
       row: 5
@@ -102,15 +109,22 @@
       height: 2
 
     - name: kpi_morosidad_90
-      title_hidden: true
-      show_single_value_title: true
       title: "Morosidad +90 días"
       model: demos_looker
       explore: fact_cartera_credito
       type: single_value
+      custom_color_enabled: true
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       fields: [fact_cartera_credito.indice_morosidad_90_pct]
       listen:
         fecha_corte: fact_cartera_credito.fecha_corte_date
@@ -120,15 +134,22 @@
       height: 2
 
     - name: kpi_cartera_vencida
-      title_hidden: true
-      show_single_value_title: true
       title: "Cartera Vencida (>0 días)"
       model: demos_looker
       explore: fact_cartera_credito
       type: single_value
+      custom_color_enabled: true
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       fields: [fact_cartera_credito.indice_cartera_vencida_pct]
       listen:
         fecha_corte: fact_cartera_credito.fecha_corte_date
@@ -138,16 +159,23 @@
       height: 2
 
     - name: kpi_creditos_vencidos
-      title_hidden: true
-      show_single_value_title: true
       title: "Créditos Vencidos"
       model: demos_looker
       explore: fact_cartera_credito
       type: single_value
+      custom_color_enabled: true
       fields: [fact_cartera_credito.creditos_vencidos]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         fecha_corte: fact_cartera_credito.fecha_corte_date
       row: 5
@@ -268,16 +296,23 @@
       height: 1
 
     - name: kpi_operaciones_procesadas
-      title_hidden: true
-      show_single_value_title: true
       title: "Operaciones Procesadas"
       model: demos_looker
       explore: fact_operaciones_diarias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_operaciones_diarias.total_operaciones_procesadas]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo_operaciones: fact_operaciones_diarias.fecha_date
       row: 17
@@ -286,15 +321,22 @@
       height: 2
 
     - name: kpi_tasa_rechazo
-      title_hidden: true
-      show_single_value_title: true
       title: "Tasa de Rechazo"
       model: demos_looker
       explore: fact_operaciones_diarias
       type: single_value
+      custom_color_enabled: true
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       fields: [fact_operaciones_diarias.tasa_rechazo_pct]
       listen:
         periodo_operaciones: fact_operaciones_diarias.fecha_date
@@ -304,16 +346,23 @@
       height: 2
 
     - name: kpi_pendientes
-      title_hidden: true
-      show_single_value_title: true
       title: "Operaciones Pendientes"
       model: demos_looker
       explore: fact_operaciones_diarias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_operaciones_diarias.total_operaciones_pendientes]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo_operaciones: fact_operaciones_diarias.fecha_date
       row: 17
@@ -322,16 +371,23 @@
       height: 2
 
     - name: kpi_tiempo_resolucion
-      title_hidden: true
-      show_single_value_title: true
       title: "Tiempo Resolución Ponderado"
       model: demos_looker
       explore: fact_operaciones_diarias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_operaciones_diarias.tiempo_resolucion_ponderado_min]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo_operaciones: fact_operaciones_diarias.fecha_date
       row: 17
@@ -340,16 +396,23 @@
       height: 2
 
     - name: kpi_error_ponderado
-      title_hidden: true
-      show_single_value_title: true
       title: "% Registros con Error"
       model: demos_looker
       explore: fact_operaciones_diarias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_operaciones_diarias.pct_error_ponderado]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo_operaciones: fact_operaciones_diarias.fecha_date
       row: 17
@@ -358,16 +421,23 @@
       height: 2
 
     - name: kpi_dias_fuera_sla
-      title_hidden: true
-      show_single_value_title: true
       title: "Días Fuera de SLA (Tiempo)"
       model: demos_looker
       explore: fact_operaciones_diarias
       type: single_value
+      custom_color_enabled: true
       fields: [fact_operaciones_diarias.dias_fuera_sla_tiempo]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         periodo_operaciones: fact_operaciones_diarias.fecha_date
       row: 17
@@ -455,15 +525,22 @@
       height: 1
 
     - name: kpi_indice_calidad
-      title_hidden: true
-      show_single_value_title: true
       title: "Índice de Calidad Global"
       model: demos_looker
       explore: calidad_datos
       type: single_value
+      custom_color_enabled: true
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       fields: [calidad_datos.indice_calidad_pct]
       listen:
         severidad: calidad_datos.severidad
@@ -473,16 +550,23 @@
       height: 2
 
     - name: kpi_reglas_con_falla
-      title_hidden: true
-      show_single_value_title: true
       title: "Reglas con Falla"
       model: demos_looker
       explore: calidad_datos
       type: single_value
+      custom_color_enabled: true
       fields: [calidad_datos.reglas_con_falla]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         severidad: calidad_datos.severidad
       row: 29
@@ -491,16 +575,23 @@
       height: 2
 
     - name: kpi_registros_con_falla
-      title_hidden: true
-      show_single_value_title: true
       title: "Total Registros con Falla"
       model: demos_looker
       explore: calidad_datos
       type: single_value
+      custom_color_enabled: true
       fields: [calidad_datos.total_registros_con_falla]
       custom_color: "#FFFFFF"
-      tile_background_color: "#002D6F"
-      tile_text_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
+      show_single_value_title: true
+      show_comparison: false
       listen:
         severidad: calidad_datos.severidad
       row: 29

@@ -67,7 +67,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#C13584"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         post_date: social_media_analytics.post_date
         platform: social_media_analytics.platform
@@ -75,7 +83,7 @@
       row: 2
       col: 0
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_impresiones
       title: "Impresiones Totales"
@@ -86,7 +94,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#C13584"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         post_date: social_media_analytics.post_date
         platform: social_media_analytics.platform
@@ -94,7 +110,7 @@
       row: 2
       col: 4
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_alcance
       title: "Alcance Único"
@@ -105,7 +121,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#C13584"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         post_date: social_media_analytics.post_date
         platform: social_media_analytics.platform
@@ -113,7 +137,7 @@
       row: 2
       col: 8
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_interacciones
       title: "Interacciones (Engagements)"
@@ -124,7 +148,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#C13584"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         post_date: social_media_analytics.post_date
         platform: social_media_analytics.platform
@@ -132,7 +164,7 @@
       row: 2
       col: 12
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_engagement_ponderado
       title: "Engagement Rate (Ponderado)"
@@ -143,7 +175,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#1E8E3E"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         post_date: social_media_analytics.post_date
         platform: social_media_analytics.platform
@@ -151,7 +191,7 @@
       row: 2
       col: 16
       width: 4
-      height: 3
+      height: 2
 
     - name: kpi_posts_virales
       title: "Posts Virales (>=12%)"
@@ -162,7 +202,15 @@
       custom_color_enabled: true
       show_single_value_title: true
       show_comparison: false
-      custom_color: "#C13584"
+      custom_color: "#FFFFFF"
+      conditional_formatting_include_totals: false
+      conditional_formatting_include_nulls: false
+      conditional_formatting: [{
+        type: not null,
+        value: [],
+        background_color: "#002D6F",
+        font_color: "#FFFFFF"
+      }]
       listen:
         post_date: social_media_analytics.post_date
         platform: social_media_analytics.platform
@@ -170,7 +218,7 @@
       row: 2
       col: 20
       width: 4
-      height: 3
+      height: 2
 
     # --- Filas 2-3: Gráficos Principales ---
     - name: chart_impresiones_plataforma_tiempo
