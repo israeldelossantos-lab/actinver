@@ -666,3 +666,37 @@
       col: 0
       width: 24
       height: 8
+
+    # Fila 6 Titulo
+    - name: title_chart_mapa_sucursales
+      type: text
+      body_text: "<div style='display:flex; align-items:center; justify-content:center; font-family: Roboto, Arial, sans-serif; font-weight:400; font-size:14px; color:#002D6F; width:100%;'><div style='flex:1; height:2px; background-color:#002D6F; margin:0 12px;'></div>Captación por Sucursal<div style='flex:1; height:2px; background-color:#002D6F; margin:0 12px;'></div></div>"
+      row: 51
+      col: 0
+      width: 24
+      height: 1
+
+    - name: chart_mapa_sucursales
+      title: "Captación Neta por Sucursal"
+      model: demos_looker
+      explore: fact_movimientos_inversion
+      type: looker_map
+      fields: [dim_sucursales.ubicacion, dim_sucursales.sucursal_nombre, fact_movimientos_inversion.captacion_neta_mxn]
+      sorts: [fact_movimientos_inversion.captacion_neta_mxn desc]
+      limit: 500
+      map_plot_mode: points
+      map_marker_type: circle
+      map_marker_radius_mode: proportional_value
+      map_position: fit_data
+      map_tile_provider: light
+      listen:
+        periodo: fact_movimientos_inversion.fecha_date
+        region: dim_asesores.region
+        asesor: dim_asesores.asesor_nombre
+        segmento: dim_clientes.segmento
+        producto: dim_productos.producto_nombre
+        perfil_riesgo: dim_clientes.perfil_riesgo
+      row: 52
+      col: 0
+      width: 24
+      height: 10

@@ -470,3 +470,23 @@
       col: 12
       width: 12
       height: 8
+
+    - name: chart_mapa_morosidad_sucursal
+      title: "Morosidad +90 por Sucursal"
+      model: demos_looker
+      explore: fact_cartera_credito
+      type: looker_map
+      fields: [dim_sucursales.ubicacion, dim_sucursales.sucursal_nombre, fact_cartera_credito.indice_morosidad_90_pct]
+      sorts: [fact_cartera_credito.indice_morosidad_90_pct desc]
+      limit: 500
+      map_plot_mode: points
+      map_marker_type: circle
+      map_marker_radius_mode: proportional_value
+      map_position: fit_data
+      map_tile_provider: light
+      listen:
+        fecha_corte: fact_cartera_credito.fecha_corte_date
+      row: 50
+      col: 0
+      width: 24
+      height: 10
