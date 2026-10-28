@@ -35,6 +35,12 @@ view: fact_movimientos_inversion {
     sql: ${TABLE}.producto_id ;;
   }
 
+  dimension: sucursal {
+    type: string
+    label: "Sucursal"
+    sql: ${TABLE}.sucursal ;;
+  }
+
   dimension: tipo_movimiento {
     type: string
     label: "Tipo de Movimiento"

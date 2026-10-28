@@ -8,6 +8,12 @@ view: dim_clientes {
     sql: ${TABLE}.cliente_id ;;
   }
 
+  dimension: sucursal {
+    type: string
+    label: "Sucursal"
+    sql: ${TABLE}.sucursal ;;
+  }
+
   dimension: segmento {
     type: string
     label: "Segmento"
@@ -126,7 +132,7 @@ view: dim_clientes {
     type: count
     group_label: "Hoja de ruta"
     label: "Bajas de Clientes"
-    description: "Conteo de clientes dados de baja en el periodo"
+    description: "Conteo de bajas expresado en negativo para barras comparativas"
     filters: [fecha_baja_date: "-null"]
   }
 

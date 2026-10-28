@@ -34,6 +34,12 @@ view: fact_cartera_credito {
     sql: ${TABLE}.empresa_id ;;
   }
 
+  dimension: sucursal {
+    type: string
+    label: "Sucursal"
+    sql: ${TABLE}.sucursal ;;
+  }
+
   dimension: saldo_capital_mxn {
     type: number
     label: "Saldo Capital MXN"

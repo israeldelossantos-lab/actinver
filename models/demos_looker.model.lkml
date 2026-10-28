@@ -125,6 +125,12 @@ explore: fact_movimientos_inversion {
     relationship: many_to_one
     sql_on: ${fact_movimientos_inversion.producto_id} = ${dim_productos.producto_id} ;;
   }
+
+  join: dim_sucursales {
+    type: left_outer
+    sql_on: ${fact_movimientos_inversion.sucursal} = ${dim_sucursales.sucursal} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: fact_cartera_credito {
@@ -135,6 +141,12 @@ explore: fact_cartera_credito {
     type: left_outer
     relationship: many_to_one
     sql_on: ${fact_cartera_credito.cliente_id} = ${dim_clientes.cliente_id} ;;
+  }
+
+  join: dim_sucursales {
+    type: left_outer
+    sql_on: ${fact_cartera_credito.sucursal} = ${dim_sucursales.sucursal} ;;
+    relationship: many_to_one
   }
 }
 
