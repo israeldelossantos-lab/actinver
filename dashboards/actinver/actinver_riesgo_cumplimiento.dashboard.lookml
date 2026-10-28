@@ -481,12 +481,23 @@
       limit: 500
       map_plot_mode: points
       map_marker_type: circle
+      map_marker_units: pixels
       map_marker_radius_mode: proportional_value
-      map_position: fit_data
+      map_marker_radius_min: 6
+      map_marker_radius_max: 26
+      map_marker_proportional_scale_type: linear
+      map_marker_color_mode: value
+      map_value_colors: ["#FFE0B2", "#C5221F"]
+      map_position: custom
+      map_latitude: 23.6
+      map_longitude: -102.5
+      map_zoom: 5
       map_tile_provider: light
+      map_scale_indicator: 'off'
+      show_legend: true
       listen:
         fecha_corte: fact_cartera_credito.fecha_corte_date
       row: 50
       col: 0
       width: 24
-      height: 10
+      height: 12

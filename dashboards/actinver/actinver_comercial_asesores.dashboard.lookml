@@ -686,9 +686,20 @@
       limit: 500
       map_plot_mode: points
       map_marker_type: circle
+      map_marker_units: pixels
       map_marker_radius_mode: proportional_value
-      map_position: fit_data
+      map_marker_radius_min: 6
+      map_marker_radius_max: 26
+      map_marker_proportional_scale_type: linear
+      map_marker_color_mode: value
+      map_value_colors: ["#9EC5FF", "#002D6F"]
+      map_position: custom
+      map_latitude: 23.6
+      map_longitude: -102.5
+      map_zoom: 5
       map_tile_provider: light
+      map_scale_indicator: 'off'
+      show_legend: true
       listen:
         periodo: fact_movimientos_inversion.fecha_date
         region: dim_asesores.region
@@ -699,4 +710,4 @@
       row: 52
       col: 0
       width: 24
-      height: 10
+      height: 12
