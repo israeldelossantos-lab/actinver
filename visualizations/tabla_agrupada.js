@@ -24,11 +24,17 @@
         '.tga-title{font-size:14px;font-weight:500;color:#202124;margin-right:4px;}',
         '.tga-count{font-size:12px;color:#80868b;}',
         '.tga-spacer{flex:1 1 auto;}',
-        '.tga-btn{height:26px;padding:0 10px;border:1px solid #dadce0;background:#fff;border-radius:4px;cursor:pointer;color:#3c4043;font-size:12px;}',
+        '.tga-btn{height:26px;padding:0 10px;border:1px solid #dadce0;background:#fff;border-radius:13px;cursor:pointer;color:#3c4043;font-size:12px;}',
         '.tga-btn:hover{background:#f1f3f4;}',
         '.tga-search{height:26px;min-width:170px;padding:0 10px;border:1px solid #dadce0;border-radius:13px;font-size:12px;outline:none;color:#3c4043;background:#fff;}',
         '.tga-search:focus{border-color:#1a73e8;box-shadow:0 0 0 1px #1a73e8;}',
-        '.tga-scroll{flex:1 1 0;min-height:0;overflow:auto;border:1px solid #e0e0e0;}',
+        '.tga-scroll{flex:1 1 0;min-height:0;overflow:auto;border:1px solid #e0e0e0;border-radius:10px;box-shadow:0 1px 3px rgba(60,64,67,.12);background:#fff;}',
+        '.tga-scroll::-webkit-scrollbar{width:10px;height:10px;}',
+        '.tga-scroll::-webkit-scrollbar-thumb{background:#c4c7cc;border-radius:10px;border:2px solid #fff;}',
+        '.tga-scroll::-webkit-scrollbar-track{background:transparent;}',
+        '.tga-scroll::-webkit-scrollbar-corner{background:transparent;}',
+        '.tga-toggle{border-radius:50%;}',
+        '.tga-labelcell:hover .tga-toggle{background:#e8eaed;}',
         '.tga-table{border-collapse:separate;border-spacing:0;min-width:100%;}',
         '.tga-table td,.tga-table th{white-space:nowrap;}',
         '.tga-table th{position:sticky;top:0;z-index:2;font-weight:500;text-align:center;cursor:pointer;user-select:none;border-bottom:1px solid #c7c7c7;}',
@@ -129,7 +135,9 @@
         } else if (dots > 1) { grpSep = '.'; decSep = ','; }
 
         var decimals = num.indexOf(decSep) >= 0 ? num.split(decSep)[1].replace(/\D/g, '').length : 0;
-        var grouping = num.indexOf(grpSep) >= 0;
+        var intDigits = num.split(decSep)[0].replace(/\D/g, '').length;
+        // con 4+ digitos enteros se sabe si usa separador de miles; si no, se desconoce (null)
+        var grouping = num.indexOf(grpSep) >= 0 ? true : (intDigits >= 4 ? false : null);
         var parsed = Number(num.split(grpSep).join('').replace(decSep, '.'));
 
         var factor = 1;
@@ -147,7 +155,7 @@
     }
 
     function makeFormatter(col, rows) {
-        var fmt = null, maxDec = 0;
+        var fmt = null, maxDec = 0, grouping = null;
         for (var i = 0; i < rows.length && i < 300; i++) {
             var cell = col.get(rows[i]);
             var v = toNumber(cell);
@@ -155,10 +163,13 @@
             var p = parseRendered(cell.rendered, v);
             if (!p) continue;
             if (p.decimals > maxDec) maxDec = p.decimals;
+            if (p.grouping != null && grouping == null) grouping = p.grouping;
             if (!fmt || (fmt.factor === 1 && v !== 0 && p.factor !== 1)) fmt = p;
-            if (fmt && v !== 0 && i > 20) break;
         }
-        if (fmt) fmt.decimals = Math.max(fmt.decimals, maxDec);
+        if (fmt) {
+            fmt.decimals = Math.max(fmt.decimals, maxDec);
+            fmt.grouping = grouping == null ? true : grouping; // por defecto con separador de miles
+        }
 
         var isPct = !!(fmt && fmt.suffix.indexOf('%') >= 0) ||
             /percent/i.test((col.field && col.field.value_format_name) || '') ||
@@ -258,9 +269,9 @@
         label: 'Tabla Agrupada (Deacero)',
         options: {
             // --- Agrupado
-            niveles_agrupacion: { type: 'number', label: 'Niveles de agrupado (primeras N dimensiones)', default: 1, section: 'Agrupado', order: 1 },
+            niveles_agrupacion: { type: 'number', label: 'Niveles de agrupado - solo modo columnas (0 = todas)', default: 0, section: 'Agrupado', order: 1 },
             modo_agrupacion: {
-                type: 'string', label: 'Modo', display: 'select', default: 'columnas', section: 'Agrupado', order: 2,
+                type: 'string', label: 'Modo', display: 'select', default: 'arbol', section: 'Agrupado', order: 2,
                 values: [{ 'Columnas separadas': 'columnas' }, { '\u00C1rbol (una columna)': 'arbol' }]
             },
             titulo_columna_grupo: { type: 'string', label: 'T\u00EDtulo columna de grupo (modo \u00E1rbol)', default: '', section: 'Agrupado', order: 3 },
@@ -292,6 +303,7 @@
             color_encabezado: { type: 'string', label: 'Color de encabezado', display: 'color', default: '#3d85c6', section: 'Estilo', order: 2 },
             color_texto_encabezado: { type: 'string', label: 'Color texto de encabezado', display: 'color', default: '#ffffff', section: 'Estilo', order: 3 },
             bordes_verticales: { type: 'boolean', label: 'Bordes verticales', default: true, section: 'Estilo', order: 4 },
+            radio_bordes: { type: 'number', label: 'Redondeo de contorno (px, 0 = recto)', default: 10, section: 'Estilo', order: 8 },
             zebra: { type: 'boolean', label: 'Filas alternadas', default: false, section: 'Estilo', order: 5 },
             grupos_en_negritas: { type: 'boolean', label: 'Filas de grupo en negritas', default: false, section: 'Estilo', order: 6 },
             negritas_si_contiene: { type: 'string', label: 'Negritas si el grupo contiene (ej. TOTAL, VENTAS NETAS)', default: '', section: 'Estilo', order: 7 }
@@ -322,8 +334,11 @@
             var dimCols = cols.filter(function (c) { return c.isDim; });
 
             var levels = Math.round(Number(config.niveles_agrupacion));
-            if (isNaN(levels) || levels < 1) levels = 1;
-            if (levels > dimCols.length) levels = dimCols.length;
+            // Modo arbol: SIEMPRE anida todas las dimensiones en la primera columna.
+            // Modo columnas: agrupa por las primeras N (0 / vacio = todas).
+            if (config.modo_agrupacion !== 'columnas' || isNaN(levels) || levels < 1 || levels > dimCols.length) {
+                levels = dimCols.length;
+            }
 
             // formateadores y metodo de calculo por columna numerica
             var overrides = parseOverrides(config.agregacion_por_columna);
@@ -492,7 +507,7 @@
         _render: function () {
             var self = this, ctx = this._ctx, cfg = ctx.config, st = this._state;
             var xf = !!ctx.details.crossfilterEnabled;
-            var arbol = cfg.modo_agrupacion === 'arbol';
+            var arbol = cfg.modo_agrupacion !== 'columnas';
 
             // 1. filtrar por buscador
             var rows = ctx.data;
@@ -529,6 +544,9 @@
             var freeze = cfg.fijar_primera_columna !== false;
             var hdrBg = cfg.color_encabezado || '#3d85c6';
             var hdrFg = cfg.color_texto_encabezado || '#ffffff';
+            var radius = Number(cfg.radio_bordes);
+            if (cfg.radio_bordes == null || cfg.radio_bordes === '' || isNaN(radius) || radius < 0) radius = 10;
+            this._scroll.style.borderRadius = radius + 'px';
 
             // ---- encabezado
             var thead = document.createElement('thead');
