@@ -2,6 +2,6 @@ project_name: "demos_looker"
 
 visualization: {
   id: "deacero-tabla"
-  label: "Tabla (Deacero)"
+  label: "tabla isr"
   file: "visualizations/tabla_generica.js"
 }

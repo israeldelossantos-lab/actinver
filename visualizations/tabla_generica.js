@@ -1,5 +1,5 @@
 /**
- * Tabla Deacero - Visualizacion personalizada tipo tabla para Looker (core)
+ * Tabla genrica - Visualizacion personalizada tipo tabla para Looker (core)
  *
  * Funciones:
  *  - Dimensiones, medidas, calculos de tabla y pivotes
