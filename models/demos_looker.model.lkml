@@ -4,7 +4,7 @@ include: "/views/**/*.view.lkml"
 include: "/dashboards/**/*.dashboard.lookml"
 
 named_value_format: mxn_m {
-  value_format: "[>=1000000]$#,##0.0,,\"M\";$#,##0"
+  value_format: "[>=1000000]$#,##0.0,\"M\";$#,##0"
 }
 
 # ==============================================================================
@@ -195,4 +195,160 @@ explore: dim_clientes {
     relationship: many_to_one
     sql_on: ${dim_clientes.asesor_id} = ${dim_asesores.asesor_id} ;;
   }
+}
+
+# ==============================================================================
+# === SOCIAL ANALYTICS (Centro de Decisiones de Campañas) ===
+# ==============================================================================
+
+# TODO: access_filter por marca cuando haya datos reales
+
+explore: sa_campanas {
+  label: "Campañas Pagadas"
+  description: "Desempeño diario de campañas, conjuntos y anuncios en Meta, TikTok y Google Ads"
+  group_label: "Social Analytics"
+  view_name: sa_fact_ad_daily
+
+  join: sa_dim_ad {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_fact_ad_daily.ad_id} = ${sa_dim_ad.ad_id} ;;
+  }
+
+  join: sa_dim_adset {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_ad.adset_id} = ${sa_dim_adset.adset_id} ;;
+  }
+
+  join: sa_dim_campaign {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_adset.campaign_id} = ${sa_dim_campaign.campaign_id} ;;
+  }
+
+  join: sa_dim_account {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_campaign.account_id} = ${sa_dim_account.account_id} ;;
+  }
+
+  join: sa_dim_platform {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_account.platform_id} = ${sa_dim_platform.platform_id} ;;
+  }
+}
+
+explore: sa_organico {
+  label: "Contenido Orgánico"
+  description: "Rendimiento y engagement de posts, videos y reels en Facebook, Instagram y TikTok"
+  group_label: "Social Analytics"
+  view_name: sa_fact_post_daily
+
+  join: sa_dim_post {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_fact_post_daily.post_id} = ${sa_dim_post.post_id} ;;
+  }
+
+  join: sa_dim_account {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_post.account_id} = ${sa_dim_account.account_id} ;;
+  }
+
+  join: sa_dim_platform {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_account.platform_id} = ${sa_dim_platform.platform_id} ;;
+  }
+}
+
+explore: sa_seguidores {
+  label: "Crecimiento de Cuentas"
+  description: "Evolución histórica de seguidores y visualizaciones de perfil de las cuentas"
+  group_label: "Social Analytics"
+  view_name: sa_fact_account_daily
+
+  join: sa_dim_account {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_fact_account_daily.account_id} = ${sa_dim_account.account_id} ;;
+  }
+
+  join: sa_dim_platform {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_account.platform_id} = ${sa_dim_platform.platform_id} ;;
+  }
+}
+
+explore: sa_comentarios {
+  label: "Comentarios y Sentimiento"
+  description: "Análisis cualitativo y clasificación de sentimiento por IA de comentarios"
+  group_label: "Social Analytics"
+  view_name: sa_dim_comment
+
+  join: sa_ai_comment_analysis {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${sa_dim_comment.comment_id} = ${sa_ai_comment_analysis.comment_id} ;;
+  }
+
+  join: sa_dim_post {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_comment.post_id} = ${sa_dim_post.post_id} ;;
+  }
+
+  join: sa_dim_account {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_post.account_id} = ${sa_dim_account.account_id} ;;
+  }
+
+  join: sa_dim_platform {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_account.platform_id} = ${sa_dim_platform.platform_id} ;;
+  }
+}
+
+explore: sa_decisiones {
+  label: "Bitácora de Decisiones"
+  description: "Registro de decisiones tácticas y evaluación de su impacto real vs esperado"
+  group_label: "Social Analytics"
+  view_name: sa_decision_log
+
+  join: sa_decision_impact {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${sa_decision_log.decision_id} = ${sa_decision_impact.decision_id} ;;
+  }
+
+  join: sa_dim_campaign {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_decision_log.campaign_id} = ${sa_dim_campaign.campaign_id} ;;
+  }
+
+  join: sa_dim_account {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_campaign.account_id} = ${sa_dim_account.account_id} ;;
+  }
+
+  join: sa_dim_platform {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sa_dim_account.platform_id} = ${sa_dim_platform.platform_id} ;;
+  }
+}
+
+explore: sa_ia_insights {
+  label: "Insights de IA"
+  description: "Auditorías automáticas, detección de anomalías y reportes ejecutivos generados por Claude"
+  group_label: "Social Analytics"
+  view_name: sa_ai_insight
 }

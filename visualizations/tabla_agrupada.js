@@ -101,6 +101,42 @@
         return esc(cellText(cell));
     }
 
+    // ------------------------------------------------------------------ color
+    function parseColor(c) {
+        var s = String(c || '').trim();
+        var m = s.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+        if (m) {
+            var h = m[1].length === 3 ? m[1].replace(/(.)/g, '$1$1') : m[1];
+            var n = parseInt(h, 16);
+            return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+        }
+        m = s.match(/^rgba?\(\s*(\d+)[\s,]+(\d+)[\s,]+(\d+)/i);
+        return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
+    }
+
+    function relLuminance(rgb) {
+        var a = rgb.map(function (v) {
+            v /= 255;
+            return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+        });
+        return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+    }
+
+    function contrast(c1, c2) {
+        var l1 = relLuminance(c1), l2 = relLuminance(c2);
+        return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+    }
+
+    // Usa el color de texto sugerido solo si se lee bien (contraste >= 3:1, etiquetas de
+    // encabezado); si no, elige blanco o negro, el que tenga mas contraste.
+    function pickTextColor(bg, suggested) {
+        var b = parseColor(bg);
+        if (!b) return suggested || '#ffffff';
+        var s = parseColor(suggested);
+        if (s && contrast(b, s) >= 3) return suggested;
+        return contrast(b, [255, 255, 255]) >= contrast(b, [32, 33, 36]) ? '#ffffff' : '#202124';
+    }
+
     function toNumber(cell) {
         if (!cell || cell.value == null || cell.value === '') return null;
         var n = Number(cell.value);
@@ -300,8 +336,13 @@
                 type: 'string', label: 'Densidad', display: 'select', default: 'compacta', section: 'Estilo', order: 1,
                 values: [{ 'Compacta': 'compacta' }, { 'Normal': 'normal' }, { 'Amplia': 'amplia' }]
             },
-            color_encabezado: { type: 'string', label: 'Color de encabezado', display: 'color', default: '#3d85c6', section: 'Estilo', order: 2 },
-            color_texto_encabezado: { type: 'string', label: 'Color texto de encabezado', display: 'color', default: '#ffffff', section: 'Estilo', order: 3 },
+            // Selector de paleta nativo de Looker (colecciones + pestana Custom).
+            // Color 1 = fondo del encabezado; color 2 (opcional) = texto si se lee bien,
+            // si no, el texto se calcula automatico (blanco o negro).
+            paleta_encabezado: {
+                type: 'array', label: 'Colores de encabezado (1: fondo, 2: texto opcional)', display: 'colors',
+                default: ['#3d85c6', '#ffffff'], section: 'Estilo', order: 2
+            },
             bordes_verticales: { type: 'boolean', label: 'Bordes verticales', default: true, section: 'Estilo', order: 4 },
             radio_bordes: { type: 'number', label: 'Redondeo de contorno (px, 0 = recto)', default: 10, section: 'Estilo', order: 8 },
             zebra: { type: 'boolean', label: 'Filas alternadas', default: false, section: 'Estilo', order: 5 },
@@ -542,8 +583,10 @@
                 (cfg.bordes_verticales !== false ? ' tga-vb' : '') +
                 (cfg.zebra ? ' tga-zebra' : '');
             var freeze = cfg.fijar_primera_columna !== false;
-            var hdrBg = cfg.color_encabezado || '#3d85c6';
-            var hdrFg = cfg.color_texto_encabezado || '#ffffff';
+            var pal = Array.isArray(cfg.paleta_encabezado) ? cfg.paleta_encabezado.filter(Boolean) : [];
+            // compatibilidad con configuraciones guardadas de la version anterior
+            var hdrBg = pal[0] || cfg.color_encabezado || '#3d85c6';
+            var hdrFg = pickTextColor(hdrBg, pal[1] || cfg.color_texto_encabezado);
             var radius = Number(cfg.radio_bordes);
             if (cfg.radio_bordes == null || cfg.radio_bordes === '' || isNaN(radius) || radius < 0) radius = 10;
             this._scroll.style.borderRadius = radius + 'px';
